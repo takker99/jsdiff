@@ -1,30 +1,28 @@
-export function convertChangesToXML(changes) {
-  let ret = [];
-  for (let i = 0; i < changes.length; i++) {
-    let change = changes[i];
+import type { Change } from "../types.ts";
+
+export function convertChangesToXML(changes: Change[]) {
+  let xml = "";
+  for (const change of changes) {
     if (change.added) {
-      ret.push('<ins>');
+      xml += "<ins>";
     } else if (change.removed) {
-      ret.push('<del>');
+      xml += "<del>";
     }
 
-    ret.push(escapeHTML(change.value));
+    xml += escapeHTML(change.value);
 
     if (change.added) {
-      ret.push('</ins>');
+      xml += "</ins>";
     } else if (change.removed) {
-      ret.push('</del>');
+      xml += "</del>";
     }
   }
-  return ret.join('');
+  return xml;
 }
 
-function escapeHTML(s) {
-  let n = s;
-  n = n.replace(/&/g, '&amp;');
-  n = n.replace(/</g, '&lt;');
-  n = n.replace(/>/g, '&gt;');
-  n = n.replace(/"/g, '&quot;');
-
-  return n;
+function escapeHTML(s: string) {
+  return s.replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }

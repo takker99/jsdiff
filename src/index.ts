@@ -14,48 +14,48 @@
  * "An O(ND) Difference Algorithm and its Variations" (Myers, 1986).
  * http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.4.6927
  */
-import Diff from './diff/base';
-import {diffChars} from './diff/character';
-import {diffWords, diffWordsWithSpace} from './diff/word';
-import {diffLines, diffTrimmedLines} from './diff/line';
-import {diffSentences} from './diff/sentence';
+import Diff from "./diff/base.ts";
+import { diffChars } from "./diff/charcter.ts";
+import { diffWords, diffWordsWithSpace } from "./diff/word.ts";
+import { diffLines, diffTrimmedLines } from "./diff/line.ts";
+import { diffSentences } from "./diff/sentence.ts";
 
-import {diffCss} from './diff/css';
-import {diffJson, canonicalize} from './diff/json';
+import { diffCss } from "./diff/css.ts";
+import { canonicalize, diffJson } from "./diff/json.ts";
 
-import {diffArrays} from './diff/array';
+import { diffArrays } from "./diff/array.ts";
 
-import {applyPatch, applyPatches} from './patch/apply';
-import {parsePatch} from './patch/parse';
-import {merge} from './patch/merge';
-import {structuredPatch, createTwoFilesPatch, createPatch} from './patch/create';
+import { applyPatch, applyPatches } from "./patch/apply.ts";
+import { parsePatch } from "./patch/parse.ts";
+import { merge } from "./patch/merge.ts";
+import {
+  createPatch,
+  createTwoFilesPatch,
+  structuredPatch,
+} from "./patch/create.ts";
 
-import {convertChangesToDMP} from './convert/dmp';
-import {convertChangesToXML} from './convert/xml';
+import { convertChangesToDMP } from "./convert/dmp.ts";
+import { convertChangesToXML } from "./convert/xml.ts";
 
 export {
-  Diff,
-
-  diffChars,
-  diffWords,
-  diffWordsWithSpace,
-  diffLines,
-  diffTrimmedLines,
-  diffSentences,
-
-  diffCss,
-  diffJson,
-
-  diffArrays,
-
-  structuredPatch,
-  createTwoFilesPatch,
-  createPatch,
   applyPatch,
   applyPatches,
-  parsePatch,
-  merge,
+  canonicalize,
   convertChangesToDMP,
   convertChangesToXML,
-  canonicalize
+  createPatch,
+  createTwoFilesPatch,
+  Diff,
+  diffArrays,
+  diffChars,
+  diffCss,
+  diffJson,
+  diffLines,
+  diffSentences,
+  diffTrimmedLines,
+  diffWords,
+  diffWordsWithSpace,
+  merge,
+  parsePatch,
+  structuredPatch,
 };

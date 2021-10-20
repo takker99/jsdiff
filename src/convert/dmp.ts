@@ -1,19 +1,14 @@
-// See: http://code.google.com/p/google-diff-match-patch/wiki/API
-export function convertChangesToDMP(changes) {
-  let ret = [],
-      change,
-      operation;
-  for (let i = 0; i < changes.length; i++) {
-    change = changes[i];
-    if (change.added) {
-      operation = 1;
-    } else if (change.removed) {
-      operation = -1;
-    } else {
-      operation = 0;
-    }
+import type { Change } from "../types.ts";
 
-    ret.push([operation, change.value]);
+// See: http://code.google.com/p/google-diff-match-patch/wiki/API
+export function* convertChangesToDMP(changes: Change[]) {
+  for (const change of changes) {
+    if (change.added) {
+      yield [1, change.value];
+    } else if (change.removed) {
+      yield [-1, change.value];
+    } else {
+      yield [0, change.value];
+    }
   }
-  return ret;
 }
